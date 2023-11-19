@@ -133,10 +133,11 @@ class TestAccountService(TestCase):
         self.assertEqual(data["name"], account.name)
 
 
-    # def test_list_all_accounts(self):
-    #     self._create_accounts(3)
-    #     response = self.client.get(BASE_URL)
-    #     self.assertEqual(response.status_code, status.HTTP_200_OK)
-    #     data = response.get_json()
-    #     self.assertEqual(len(data), 3)
+    def test_list_all_accounts(self):
+        """It should get a list of accounts"""
+        self._create_accounts(3)
+        response = self.client.get(BASE_URL)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        data = response.get_json()
+        self.assertEqual(len(data), 3)
 
