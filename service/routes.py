@@ -38,6 +38,7 @@ def index():
 ######################################################################
 # CREATE A NEW ACCOUNT
 ######################################################################
+
 @app.route("/accounts", methods=["POST"])
 def create_accounts():
     """
@@ -60,6 +61,8 @@ def create_accounts():
 ######################################################################
 # LIST ALL ACCOUNTS
 ######################################################################
+
+
 @app.route("/accounts", methods=["GET"])
 def ist_accounts():
     """List all accounts"""
@@ -74,6 +77,8 @@ def ist_accounts():
 ######################################################################
 # READ AN ACCOUNT
 ######################################################################
+
+
 @app.route("/accounts/<int:id>", methods=["GET"])
 def read_account(id):
     """Read single account"""
@@ -82,12 +87,14 @@ def read_account(id):
     account = Account.find(id)
     if not account:
         abort(status.HTTP_404_NOT_FOUND, f"There is no account: {id}")
-    
+
     return account.serialize(), status.HTTP_200_OK
 
 ######################################################################
 # UPDATE AN EXISTING ACCOUNT
 ######################################################################
+
+
 @app.route("/accounts/<int:id>", methods=["PUT"])
 def update_accounts(id):
     """Update an account"""
